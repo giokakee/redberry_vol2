@@ -1,0 +1,18 @@
+.landingPage {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100vh;
+}
+.landingSvg {
+	background: url("../svg/landing.svg") no-repeat;
+	height: 482px;
+	width: 781px;
+}
+
+.redberyText {
+	background: url("../svg/redberry.svg") no-repeat;
+	height: 18px;
+	width: 112px;
+}

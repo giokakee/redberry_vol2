@@ -1,0 +1,127 @@
+.f {
+	height: 100vh;
+	width: 100vw;
+	background-color: #f6f6f6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding-top: 53px;
+}
+
+.fBackButton {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	padding-left: 70px;
+}
+.fBackButton a {
+	background: url("../svg/back.svg");
+	height: 53px;
+	width: 53px;
+}
+
+.fForm {
+	background-color: white;
+	height: 973px;
+	min-width: 900px;
+	width: 50%;
+	max-width: 1226px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	padding-left: 174px;
+	padding-right: 174px;
+}
+
+.f1,
+.f2,
+.f3,
+.f4,
+.f5,
+.f6 {
+	width: 100%;
+}
+
+.f1 {
+	display: flex;
+	justify-content: space-between;
+}
+
+.f1 input {
+	width: 407px;
+	height: 60px;
+	outline: none;
+	border: 1.8px solid #8ac0e2;
+	border-radius: 8px;
+	padding-left: 16px;
+	padding-right: 16x;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 21px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.f4 input,
+.f5 input {
+	width: 100%;
+	height: 60px;
+	outline: none;
+	border: 1.8px solid #8ac0e2;
+	border-radius: 8px;
+	padding-left: 16px;
+	padding-right: 16x;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 21px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.username,
+.usersecondname {
+	display: flex;
+	flex-direction: column;
+}
+
+.name,
+.surname {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	font-weight: bolder;
+}
+
+.f2 select,
+.f3 select {
+	width: 100%;
+	height: 60px;
+	background-color: #ebebeb;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	outline: none;
+	border: none;
+	padding-left: 16px;
+}
+
+.f6 {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.f6 button {
+	width: 176px;
+	height: 60px;
+	border: none;
+	color: white;
+	background-color: #62a1eb;
+	border-radius: 8px;
+}
