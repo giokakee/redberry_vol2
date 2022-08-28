@@ -16,3 +16,25 @@
 	height: 18px;
 	width: 112px;
 }
+
+.landingPage button {
+	width: 387px;
+	height: 60px;
+	border: none;
+	color: white;
+	background-color: #62a1eb;
+	border-radius: 8px;
+	cursor: pointer;
+	font-family: halve;
+
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.landingButtons {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 146px;
+}

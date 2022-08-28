@@ -6,8 +6,8 @@ const Header = () => {
 	return (
 		<div className='fHeader'>
 			<div className='header-element'>
-				<p className={`${pathname == "/f" ? "underline" : ""}`}>თანამშრომლის ინფო</p>
-				<p className={`${pathname == "/s" ? "underline" : ""}`}>ლეპტოპის მახასიათებლები</p>
+				<p className={`${pathname === "/f" ? "underline" : ""}`}>თანამშრომლის ინფო</p>
+				<p className={`${pathname === "/s" ? "underline" : ""}`}>ლეპტოპის მახასიათებლები</p>
 			</div>
 		</div>
 	);
