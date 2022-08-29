@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/landing";
 import UserInfo from "./pages/first";
 import LaptopInfo from "./pages/second";
+
 function App({ num }) {
 	return (
 		<div className='App'>

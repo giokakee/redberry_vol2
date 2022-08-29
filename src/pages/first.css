@@ -125,3 +125,13 @@
 	background-color: #62a1eb;
 	border-radius: 8px;
 }
+
+.usernameError input,
+.surnameError input {
+	border: 1.8px solid red;
+}
+
+.usernameError label,
+.surnameError label {
+	color: red;
+}
