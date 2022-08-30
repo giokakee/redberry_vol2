@@ -4,8 +4,15 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/landing";
 import UserInfo from "./pages/first";
 import LaptopInfo from "./pages/second";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 function App({ num }) {
+	const dispatch = useDispatch();
+	let firstPageISValid = window.localStorage.getItem("firstPageIsValid");
+	useEffect(() => {
+		firstPageISValid ? dispatch({ type: '"VALID"' }) : dispatch({ type: "NOTVALID" });
+	}, [firstPageISValid]);
 	return (
 		<div className='App'>
 			<Routes>

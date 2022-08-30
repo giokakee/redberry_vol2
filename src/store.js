@@ -2,10 +2,10 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { configureStore } from "@reduxjs/toolkit";
 import { applyMiddleware, combineReducers } from "redux";
-import test from "./reducers/test";
+import firstPageIsValid from "./reducers/validation";
 
 const reducers = combineReducers({
-	test,
+	firstPageIsValid,
 });
 
 const store = configureStore(

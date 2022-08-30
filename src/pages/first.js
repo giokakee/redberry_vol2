@@ -3,10 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../components/header";
+import { useDispatch } from "react-redux";
 
-let geo = /ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ| /gm;
-let redbery = /@redberry.ge/;
-let whiteSpace = / /;
+let geoReg = /ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ| /g;
+let redberyReg = /@redberry.ge/;
+let whiteSpaceReg = / /;
+let numReg = /[\d ]/gm;
+let onlyNumReg = /\d/g;
+
+const checkGeoInputs = (reg, value) => {
+	return value.match(reg) !== null && value.match(reg).length === value.length && !whiteSpaceReg.test(value) && value.length > 1;
+};
 
 const UserInfo = () => {
 	const [teams, setTeams] = useState([]);
@@ -29,26 +36,53 @@ const UserInfo = () => {
 			setTeams(teamsData.data.data);
 			setPositions(positionsData.data.data);
 		};
+		let userFromLocalStorage = JSON.parse(localStorage.getItem("user"));
+		userFromLocalStorage && setUserInfo(userFromLocalStorage);
+
 		getData();
 	}, []);
 
+	useEffect(() => {
+		let formIsValid =
+			mobileValidation && mailValidation && surnameValidation && nameValidation && team.length > 0 && position.length > 0;
+
+		if (formIsValid) {
+			dispatch({ type: "VALID" });
+		} else {
+			dispatch({ type: "NOTVALID" });
+		}
+	}, [userInfo]);
+
+	let { mail, team, position, mobile, name, surname } = userInfo;
+
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
+	let mailValidation = redberyReg.test(mail.slice(mail.length - 12)) && mail.length > 12 && !whiteSpaceReg.test(mail);
+
+	let nameValidation = checkGeoInputs(geoReg, name);
+	let surnameValidation = checkGeoInputs(geoReg, surname);
+
+	let mobileValidation =
+		mobile.length > 0 &&
+		mobile.slice(0, 4) === "+995" &&
+		mobile.slice(1).match(numReg).length === mobile.length - 1 &&
+		mobile.slice(1).match(onlyNumReg).length === 9 &&
+		mobile.length < 14;
+
 	const submit = e => {
 		e.preventDefault();
-		console.log(userInfo);
-		navigate("/s");
+		let formIsValid =
+			mobileValidation && mailValidation && surnameValidation && nameValidation && team.length > 0 && position.length > 0;
+		formIsValid ? dispatch({ type: "VALID" }) && navigate("/s") : dispatch({ type: "NOTVALID" });
 	};
-
-	let nameValidation = userInfo.name.match(geo) !== null ? userInfo.name.match(geo).length === userInfo.name.length : false;
-	let surnameValidation =
-		userInfo.surname.match(geo) !== null ? userInfo.surname.match(geo).length === userInfo.surname.length : false;
-	let mailValidation =
-		redbery.test(userInfo.mail.slice(userInfo.mail.length - 12)) && userInfo.mail.length > 12 && !whiteSpace.test(userInfo.mail);
-	// console.log(userInfo.mail.slice(userInfo.mail.length - 12, userInfo.mail.length));
 
 	const userChange = (key, value) => {
 		setUserInfo({ ...userInfo, [key]: value });
+		localStorage.setItem("user", JSON.stringify({ ...userInfo, [key]: value }));
 	};
+
+	// console.log(mobileValidation && mailValidation && surnameValidation && nameValidation && team.length > 0 && position.length > 0);
 
 	return (
 		<div className='f'>
@@ -58,7 +92,7 @@ const UserInfo = () => {
 			<Header />
 			<form onSubmit={submit} className='fForm'>
 				<div className='f1'>
-					<div className={`username ${(userInfo.name.length > 0) & !nameValidation ? "usernameError" : ""}`}>
+					<div className={`username ${name.length > 0 && !nameValidation ? "inputError" : ""}`}>
 						<label className='name'>სახელი</label>
 						<input
 							type={"text"}
@@ -70,7 +104,7 @@ const UserInfo = () => {
 						/>
 						<label>მინიმუმ 2 სიმბოლო, ქართული ასოები</label>
 					</div>
-					<div className={`usersecondname ${(userInfo.surname.length > 0) & !surnameValidation ? "surnameError" : ""}`}>
+					<div className={`usersecondname ${(userInfo.surname.length > 0) & !surnameValidation ? "inputError" : ""}`}>
 						<label className={`surname`}>გვარი</label>
 						<input
 							type={"text"}
@@ -85,12 +119,12 @@ const UserInfo = () => {
 				</div>
 				<div className='f2'>
 					<select defaultValue={""} onChange={({ target }) => userChange("team", target.value)} required>
-						<option value={""} disabled>
+						<option disabled value={""}>
 							თიმი
 						</option>
 						{teams.map(team => {
 							return (
-								<option value={team.name} key={team.id}>
+								<option value={team.name} selected={userInfo.team === team.name} key={team.id}>
 									{team.name}
 								</option>
 							);
@@ -104,30 +138,30 @@ const UserInfo = () => {
 						</option>
 						{positions.map(position => {
 							return (
-								<option value={position.name} key={position.id}>
+								<option value={position.name} selected={userInfo.position === position.name} key={position.id}>
 									{position.name}
 								</option>
 							);
 						})}
 					</select>
 				</div>
-				<div className={`f4 ${!userInfo.mail.length < 1 && !mailValidation ? "surnameError" : ""}`}>
+				<div className={`f4 ${!mail.length < 1 && !mailValidation ? "inputError" : ""}`}>
 					<label>მეილი</label>
 					<input
 						placeholder='grishaoniani@redberry.ge'
 						required
 						onChange={({ target }) => userChange("mail", target.value)}
-						value={userInfo.mail}
+						value={mail}
 					/>
 					<label>უნდა მთავრდებოდეს @redberry.ge-ით</label>
 				</div>
-				<div className='f5'>
+				<div className={`f5 ${!mobileValidation && mobile.length > 0 ? "inputError" : ""}`}>
 					<label>ტელეფონის ნომერი</label>
 					<input
 						placeholder='+995 598 00 07 01'
 						required
 						onChange={({ target }) => userChange("mobile", target.value)}
-						value={userInfo.mobile}
+						value={mobile}
 					/>
 					<label>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</label>
 				</div>

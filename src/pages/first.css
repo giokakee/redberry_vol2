@@ -110,6 +110,7 @@
 	outline: none;
 	border: none;
 	padding-left: 16px;
+	cursor: pointer;
 }
 
 .f6 {
@@ -124,14 +125,13 @@
 	color: white;
 	background-color: #62a1eb;
 	border-radius: 8px;
+	cursor: pointer;
 }
 
-.usernameError input,
-.surnameError input {
+.inputError input {
 	border: 1.8px solid red;
 }
 
-.usernameError label,
-.surnameError label {
+.inputError label {
 	color: red;
 }
