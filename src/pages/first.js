@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../components/header";
 import { useDispatch } from "react-redux";
+import BackButton from "../components/backbutton";
 
 let geoReg = /ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|რ|ს|ტ|უ|ფ|ქ|ღ|ყ|შ|ჩ|ც|ძ|წ|ჭ|ხ|ჯ|ჰ| /g;
 let redberyReg = /@redberry.ge/;
@@ -86,14 +87,12 @@ const UserInfo = () => {
 
 	return (
 		<div className='f'>
-			<div className='fBackButton'>
-				<Link to={"/"}></Link>
-			</div>
+			<BackButton />
 			<Header />
 			<form onSubmit={submit} className='fForm'>
 				<div className='f1'>
 					<div className={`username ${name.length > 0 && !nameValidation ? "inputError" : ""}`}>
-						<label className='name'>სახელი</label>
+						<label className='name label_top'>სახელი</label>
 						<input
 							type={"text"}
 							placeholder='გრიშა'
@@ -105,7 +104,7 @@ const UserInfo = () => {
 						<label>მინიმუმ 2 სიმბოლო, ქართული ასოები</label>
 					</div>
 					<div className={`usersecondname ${(userInfo.surname.length > 0) & !surnameValidation ? "inputError" : ""}`}>
-						<label className={`surname`}>გვარი</label>
+						<label className={`surname label_top`}>გვარი</label>
 						<input
 							type={"text"}
 							placeholder='ონიანი'
@@ -146,7 +145,7 @@ const UserInfo = () => {
 					</select>
 				</div>
 				<div className={`f4 ${!mail.length < 1 && !mailValidation ? "inputError" : ""}`}>
-					<label>მეილი</label>
+					<label className='label_top'>მეილი</label>
 					<input
 						placeholder='grishaoniani@redberry.ge'
 						required
@@ -156,7 +155,7 @@ const UserInfo = () => {
 					<label>უნდა მთავრდებოდეს @redberry.ge-ით</label>
 				</div>
 				<div className={`f5 ${!mobileValidation && mobile.length > 0 ? "inputError" : ""}`}>
-					<label>ტელეფონის ნომერი</label>
+					<label className='label_top'>ტელეფონის ნომერი</label>
 					<input
 						placeholder='+995 598 00 07 01'
 						required
@@ -169,6 +168,10 @@ const UserInfo = () => {
 					<button type='submit'>შემდეგი</button>
 				</div>
 			</form>
+
+			<div className='redberryLogo'>
+				<div></div>
+			</div>
 		</div>
 	);
 };

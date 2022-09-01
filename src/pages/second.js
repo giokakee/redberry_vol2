@@ -10,6 +10,19 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 	const [brands, setBrands] = useState([]);
 	const [cpus, setCpus] = useState([]);
 	const [img, setImg] = useState("");
+	const [laptopInfo, setLaptopInfo] = useState({
+		name: "",
+		brand: "",
+		cpu: "",
+		core: "",
+		threads: "",
+		ram: "",
+		memoryType: "",
+		laptopState: "",
+		buyTime: "",
+		price: "",
+		img: "",
+	});
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -36,7 +49,7 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 		let file = e.target.files[0];
 
 		let data = await convertToBase64(file);
-		setImg(data);
+		setLaptopInfo({ ...laptopInfo, img: data });
 	};
 
 	const convertToBase64 = file => {
@@ -54,12 +67,17 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 		});
 	};
 
+	const changeInputs = (key, value) => {
+		setLaptopInfo({ ...laptopInfo, [key]: value });
+	};
+	console.log(laptopInfo);
+
 	return (
-		<div className='s'>
+		<div>
 			{!firstPageIsValid ? (
 				<div></div>
 			) : (
-				<div>
+				<div className='s'>
 					<div className='fBackButton'>
 						<Link to={"/f"}></Link>
 					</div>
@@ -70,21 +88,16 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 							<div className='fileBox'>
 								<p>ჩააგდე ან ატვირთე ლეპტოპის ფოტო</p>
 								<button>ატვირთე</button>
-								{/* <img
-									src={img}
-									accept='image/x-png,image/gif,image/jpeg'
-									style={{ height: "200px", width: "200px", border: "1px solid black" }}
-								/> */}
 							</div>
 							<input type={"file"} onChange={filetesting} />
 						</div>
 						<div className='s2'>
 							<div>
-								<label className='name'>ლეპტოპის სახელი</label>
-								<input />
+								<label className='label_top'>ლეპტოპის სახელი</label>
+								<input value={laptopInfo.name} onChange={({ target }) => changeInputs("name", target.value)} />
 								<label className='s2_label'>ლათინური ასოები, ციფრები, {`!@#$%^&*()`}_+= </label>
 							</div>
-							<select defaultValue={""}>
+							<select defaultValue={""} onChange={({ target }) => changeInputs("brand", target.value)}>
 								<option value={""} disabled>
 									ლეპტოპის ბრენდი
 								</option>
@@ -97,6 +110,8 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 								})}
 							</select>
 						</div>
+						<div className='forBorder'></div>
+
 						<div className='s3'>
 							<select defaultValue={""}>
 								<option value={""} disabled>
@@ -111,55 +126,80 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 								})}
 							</select>
 							<div>
-								<label>CPU-ს ბირთვი</label>
-								<input placeholder='14' />
+								<label className='label_top'>CPU-ს ბირთვი</label>
+								<input placeholder='14' onChange={({ target }) => changeInputs("core", target.value)} />
 								<label>მხოლოდ ციფრები</label>
 							</div>
 							<div>
-								<label>CPU-ს ნაკადი</label>
-								<input placeholder='365' />
+								<label className='label_top'>CPU-ს ნაკადი</label>
+								<input placeholder='365' onChange={({ target }) => changeInputs("threads", target.value)} />
 								<label>მხოლოდ ციფრები</label>
 							</div>
 						</div>
 						<div className='s4'>
 							<div>
-								<label>ლეპტოპის RAM (GB)</label>
-								<input type={"text"} placeholder='16' />
+								<label className='label_top'>ლეპტოპის RAM (GB)</label>
+								<input type={"text"} placeholder='16' onChange={({ target }) => changeInputs("ram", target.value)} />
 								<label>მხოლოდ ციფრები</label>
 							</div>
 
-							<div>
-								<label>მეხსიერების ტიპი</label>
-								<div>
-									<input type={"radio"} name='memoryType' value={"SSD"} />
-									<label>SSD</label>
-								</div>
-								<div>
-									<input type={"radio"} name='memoryType' value={"HDD"} />
-									<label>HDD</label>
+							<div className='s4_radio'>
+								<label className='label_top'>მეხსიერების ტიპი</label>
+								<div className='radioInputDiv'>
+									<div>
+										<input
+											type={"radio"}
+											name='memoryType'
+											value={"SSD"}
+											onChange={({ target }) => changeInputs("memoryType", target.value)}
+										/>
+										<label htmlFor='SSD'>SSD</label>
+									</div>
+									<div>
+										<input
+											type={"radio"}
+											name='memoryType'
+											value={"HDD"}
+											onChange={({ target }) => changeInputs("memoryType", target.value)}
+										/>
+										<label>HDD</label>
+									</div>
 								</div>
 							</div>
 						</div>
+						<div className='forBorder'></div>
 						<div className='s5'>
 							<div>
-								<label>შეძენის რიცხვი(არჩევითი)</label>
+								<label className='label_top'>შეძენის რიცხვი(არჩევითი)</label>
 								<input type={"date"} placeholder='დდ/თთ/წწწწ' />
 							</div>
 							<div>
-								<label>ლეპტოპის ფასი</label>
-								<input placeholder='0000' />
+								<label className='label_top'>ლეპტოპის ფასი</label>
+								<input placeholder='0000' onChange={({ target }) => changeInputs("price", target.value)} />
 								<label>მხოლოდ ციფრები</label>
 							</div>
 						</div>
+						<div className='forBorder'></div>
+
 						<div className='s6'>
 							<label>ლეპტოპის მდგომარეობა</label>
-							<div>
+							<div className='s6_radio'>
 								<div>
-									<input type={"radio"} name='state' value={"ახალი"} />
+									<input
+										type={"radio"}
+										name='state'
+										value={"ახალი"}
+										onChange={({ target }) => changeInputs("laptopState", target.value)}
+									/>
 									<label>ახალი</label>
 								</div>
 								<div>
-									<input type={"radio"} name='state' value={"მეორადი"} />
+									<input
+										type={"radio"}
+										name='state'
+										value={"მეორადი"}
+										onChange={({ target }) => changeInputs("laptopState", target.value)}
+									/>
 									<label>მეორადი</label>
 								</div>
 							</div>
@@ -171,6 +211,9 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 							</button>
 						</div>
 					</form>
+					<div className='redberryLogo'>
+						<div></div>
+					</div>
 				</div>
 			)}
 		</div>
