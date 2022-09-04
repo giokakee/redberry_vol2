@@ -1,0 +1,69 @@
+.addedPage {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #4a4a4a;
+}
+
+.addedBox {
+	width: 847px;
+	height: 537px;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	border-radius: 8px;
+}
+
+.addedLogo {
+	background: url("../svg/added.svg") no-repeat;
+	width: 216.22px;
+	height: 218.215px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.addedDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.button1 {
+	width: 297px;
+	height: 60px;
+	border: none;
+	color: white;
+	background-color: #62a1eb;
+	border-radius: 8px;
+	cursor: pointer;
+	font-family: halve;
+
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+	margin-bottom: 28px;
+}
+
+.button2 {
+	width: auto;
+	height: 24px;
+	left: 380px;
+	top: 469px;
+
+	font-family: "Helvetica Neue";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+	color: #0089a7;
+	outline: none;
+	border: none;
+	background-color: white;
+	cursor: pointer;
+}

@@ -1,5 +1,5 @@
 import "./first.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../components/header";
@@ -10,7 +10,6 @@ let geoReg = /ა|ბ|გ|დ|ე|ვ|ზ|თ|ი|კ|ლ|მ|ნ|ო|პ|ჟ|�
 let redberyReg = /@redberry.ge/;
 let whiteSpaceReg = / /;
 let numReg = /[\d ]/gm;
-let onlyNumReg = /\d/g;
 
 const checkGeoInputs = (reg, value) => {
 	return value.match(reg) !== null && value.match(reg).length === value.length && !whiteSpaceReg.test(value) && value.length > 1;
@@ -23,11 +22,23 @@ const UserInfo = () => {
 	const [userInfo, setUserInfo] = useState({
 		name: "",
 		surname: "",
-		team: "",
-		position: "",
-		mail: "",
-		mobile: "",
+		team_id: "",
+		position_id: "",
+		email: "",
+		phone_number: "",
 	});
+
+	let { email, team_id, position_id, phone_number, name, surname } = userInfo;
+
+	// name: userInfo.name,
+	// 	surname: userInfo.surname,
+	// 	team_id: Number(team.id),
+	// 	position_id: Number(position.id),
+	// 	phone_number: userInfo.mobile,
+	// 	email: userInfo.mail,
+
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const getData = async () => {
@@ -43,38 +54,29 @@ const UserInfo = () => {
 		getData();
 	}, []);
 
+	let mailValidation = email && redberyReg.test(email.slice(email.length - 12)) && email.length > 12 && !whiteSpaceReg.test(email);
+
+	let nameValidation = checkGeoInputs(geoReg, name);
+	let surnameValidation = checkGeoInputs(geoReg, surname);
+
+	let mobileValidation =
+		phone_number.length > 0 &&
+		phone_number.slice(0, 4) === "+995" &&
+		phone_number.slice(1).match(numReg).length === phone_number.length - 1 &&
+		phone_number.length === 13;
 	useEffect(() => {
-		let formIsValid =
-			mobileValidation && mailValidation && surnameValidation && nameValidation && team.length > 0 && position.length > 0;
+		let formIsValid = mobileValidation && mailValidation && surnameValidation && nameValidation && team_id > 0 && position_id > 0;
 
 		if (formIsValid) {
 			dispatch({ type: "VALID" });
 		} else {
 			dispatch({ type: "NOTVALID" });
 		}
-	}, [userInfo]);
-
-	let { mail, team, position, mobile, name, surname } = userInfo;
-
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	let mailValidation = redberyReg.test(mail.slice(mail.length - 12)) && mail.length > 12 && !whiteSpaceReg.test(mail);
-
-	let nameValidation = checkGeoInputs(geoReg, name);
-	let surnameValidation = checkGeoInputs(geoReg, surname);
-
-	let mobileValidation =
-		mobile.length > 0 &&
-		mobile.slice(0, 4) === "+995" &&
-		mobile.slice(1).match(numReg).length === mobile.length - 1 &&
-		mobile.slice(1).match(onlyNumReg).length === 9 &&
-		mobile.length < 14;
+	}, [userInfo, mobileValidation, mailValidation, surnameValidation, nameValidation, position_id, team_id, dispatch]);
 
 	const submit = e => {
 		e.preventDefault();
-		let formIsValid =
-			mobileValidation && mailValidation && surnameValidation && nameValidation && team.length > 0 && position.length > 0;
+		let formIsValid = mobileValidation && mailValidation && surnameValidation && nameValidation && team_id > 0 && position_id > 0;
 		formIsValid ? dispatch({ type: "VALID" }) && navigate("/s") : dispatch({ type: "NOTVALID" });
 	};
 
@@ -117,13 +119,13 @@ const UserInfo = () => {
 					</div>
 				</div>
 				<div className='f2'>
-					<select defaultValue={""} onChange={({ target }) => userChange("team", target.value)} required>
+					<select defaultValue={""} onChange={({ target }) => userChange("team_id", Number(target.value))} required>
 						<option disabled value={""}>
 							თიმი
 						</option>
 						{teams.map(team => {
 							return (
-								<option value={team.name} selected={userInfo.team === team.name} key={team.id}>
+								<option value={team.id} selected={userInfo.team_id === team.id} key={team.id}>
 									{team.name}
 								</option>
 							);
@@ -131,36 +133,36 @@ const UserInfo = () => {
 					</select>
 				</div>
 				<div className='f3'>
-					<select defaultValue={""} required onChange={({ target }) => userChange("position", target.value)}>
+					<select defaultValue={""} required onChange={({ target }) => userChange("position_id", Number(target.value))}>
 						<option value={""} disabled>
 							პოზიცია
 						</option>
 						{positions.map(position => {
 							return (
-								<option value={position.name} selected={userInfo.position === position.name} key={position.id}>
+								<option value={position.id} selected={userInfo.position_id === position.id} key={position.id}>
 									{position.name}
 								</option>
 							);
 						})}
 					</select>
 				</div>
-				<div className={`f4 ${!mail.length < 1 && !mailValidation ? "inputError" : ""}`}>
+				<div className={`f4 ${!email.length < 1 && !mailValidation ? "inputError" : ""}`}>
 					<label className='label_top'>მეილი</label>
 					<input
 						placeholder='grishaoniani@redberry.ge'
 						required
-						onChange={({ target }) => userChange("mail", target.value)}
-						value={mail}
+						onChange={({ target }) => userChange("email", target.value)}
+						value={email}
 					/>
 					<label>უნდა მთავრდებოდეს @redberry.ge-ით</label>
 				</div>
-				<div className={`f5 ${!mobileValidation && mobile.length > 0 ? "inputError" : ""}`}>
+				<div className={`f5 ${!mobileValidation && phone_number.length > 0 ? "inputError" : ""}`}>
 					<label className='label_top'>ტელეფონის ნომერი</label>
 					<input
 						placeholder='+995 598 00 07 01'
 						required
-						onChange={({ target }) => userChange("mobile", target.value)}
-						value={mobile}
+						onChange={({ target }) => userChange("phone_number", target.value)}
+						value={phone_number}
 					/>
 					<label>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</label>
 				</div>

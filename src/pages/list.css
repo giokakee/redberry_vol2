@@ -1,0 +1,59 @@
+.listPage {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	min-height: 100vh;
+	height: auto;
+	overflow-y: scroll;
+}
+.laptopList {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 66px;
+	justify-content: center;
+	width: 100%;
+	align-items: center;
+	max-width: 564px;
+}
+
+.laptopDiv {
+	width: 563px;
+	height: 205px;
+	background-color: #eafaff;
+	display: flex;
+	align-items: center;
+	padding: 14px;
+	border-radius: 20px;
+}
+.laptopDiv img {
+	width: 266px;
+	height: 178px;
+	margin-right: 28px;
+
+	border-radius: 10px;
+}
+
+.listHeader {
+	font-family: "Helvetica Neue";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 34px;
+	line-height: 21px;
+}
+.listUserName {
+	font-family: "Helvetica Neue";
+	font-style: normal;
+	font-weight: bolder;
+	font-size: 18px;
+	line-height: 21px;
+	color: #2e2e2e;
+}
+
+.listLaptopName {
+	font-family: "Helvetica Neue";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 21px;
+	color: #2e2e2e;
+}

@@ -1,0 +1,82 @@
+.oneLaptop {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+.oneLaptopHeader {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 84px;
+	position: relative;
+	margin-top: 52px;
+}
+
+.laptopBox {
+	display: flex;
+	flex-direction: column;
+	min-width: 1178px;
+	width: auto;
+}
+
+.laptopBoxDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 50px;
+}
+
+.laptopBox img {
+	width: 577px;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.infoDiv {
+	min-width: 500px;
+}
+
+.infoDiv div {
+	display: flex;
+}
+
+.infoDiv div p {
+	width: 50%;
+}
+
+.paldopBoxDivBorder {
+	border-bottom: 1px solid #a5a5a5;
+}
+
+.imageDiv {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.onelaptopBackButton {
+	position: absolute;
+}
+
+.key {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 22px;
+	line-height: 27px;
+	columns: #2e2e2e;
+}
+
+.value {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 27px;
+
+	color: #797979;
+}
