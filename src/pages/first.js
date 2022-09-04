@@ -30,13 +30,6 @@ const UserInfo = () => {
 
 	let { email, team_id, position_id, phone_number, name, surname } = userInfo;
 
-	// name: userInfo.name,
-	// 	surname: userInfo.surname,
-	// 	team_id: Number(team.id),
-	// 	position_id: Number(position.id),
-	// 	phone_number: userInfo.mobile,
-	// 	email: userInfo.mail,
-
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -85,8 +78,6 @@ const UserInfo = () => {
 		localStorage.setItem("user", JSON.stringify({ ...userInfo, [key]: value }));
 	};
 
-	// console.log(mobileValidation && mailValidation && surnameValidation && nameValidation && team.length > 0 && position.length > 0);
-
 	return (
 		<div className='f'>
 			<BackButton />
@@ -103,7 +94,7 @@ const UserInfo = () => {
 							onChange={({ target }) => userChange("name", target.value)}
 							value={userInfo.name}
 						/>
-						<label>მინიმუმ 2 სიმბოლო, ქართული ასოები</label>
+						<label className='label_bottom'>მინიმუმ 2 სიმბოლო, ქართული ასოები</label>
 					</div>
 					<div className={`usersecondname ${(userInfo.surname.length > 0) & !surnameValidation ? "inputError" : ""}`}>
 						<label className={`surname label_top`}>გვარი</label>
@@ -115,7 +106,7 @@ const UserInfo = () => {
 							onChange={({ target }) => userChange("surname", target.value)}
 							value={userInfo.surname}
 						/>
-						<label>მინიმუმ 2 სიმბოლო, ქართული ასოები</label>
+						<label className='label_bottom'>მინიმუმ 2 სიმბოლო, ქართული ასოები</label>
 					</div>
 				</div>
 				<div className='f2'>
@@ -154,7 +145,7 @@ const UserInfo = () => {
 						onChange={({ target }) => userChange("email", target.value)}
 						value={email}
 					/>
-					<label>უნდა მთავრდებოდეს @redberry.ge-ით</label>
+					<label className='label_bottom'>უნდა მთავრდებოდეს @redberry.ge-ით</label>
 				</div>
 				<div className={`f5 ${!mobileValidation && phone_number.length > 0 ? "inputError" : ""}`}>
 					<label className='label_top'>ტელეფონის ნომერი</label>
@@ -164,7 +155,7 @@ const UserInfo = () => {
 						onChange={({ target }) => userChange("phone_number", target.value)}
 						value={phone_number}
 					/>
-					<label>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</label>
+					<label className='label_bottom'>უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს</label>
 				</div>
 				<div className='f6'>
 					<button type='submit'>შემდეგი</button>

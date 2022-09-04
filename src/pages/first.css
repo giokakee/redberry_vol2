@@ -134,3 +134,76 @@
 .inputError label {
 	color: red;
 }
+
+@media only screen and (max-width: 390px) {
+	.f {
+		width: 390px;
+		display: flex;
+		height: auto;
+		overflow-y: scroll;
+	}
+	.fForm {
+		width: 100vw;
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 58px;
+	}
+
+	.f1,
+	.f2,
+	.f3,
+	.f4,
+	.f5,
+	.f6 {
+		width: 358px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.f input {
+		width: 339px;
+		height: 60px;
+		outline: none;
+		border: 1.8px solid #8ac0e2;
+		border-radius: 8px;
+		padding-left: 16px;
+		padding-right: 16x;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 21px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	.f2 select,
+	.f3 select {
+		width: 358px;
+		height: 60px;
+	}
+
+	.label_bottom {
+		font-family: "Helvetica Neue";
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+		line-height: 21px;
+		/* identical to box height, or 150% */
+
+		display: flex;
+		align-items: center;
+
+		/* შავი/500 */
+		margin-top: -17px;
+		margin-bottom: 26px;
+		color: #2e2e2e;
+	}
+
+	.redberryLogo {
+		display: none;
+	}
+	.f6 {
+		display: flex;
+		align-items: flex-end;
+	}
+}

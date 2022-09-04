@@ -143,6 +143,7 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 					<form className='sForm' onSubmit={create}>
 						<div className='s1'>
 							<div className={`fileBox ${imgName.length > 0 && !imageIsValid ? "errorImageBox" : ""}`}>
+								<div className='mobilephotosvg'></div>
 								{imgName.length > 0 && !imageIsValid ? (
 									<div className='errorImageDiv'>
 										<div className='errorImgLogo'></div>
@@ -217,7 +218,7 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 							</div>
 						</div>
 						<div className='s4'>
-							<div className={` ${laptop_ram.length > 0 && ramIsValid ? "inputError" : ""}`}>
+							<div className={` s4_input ${laptop_ram.length > 0 && ramIsValid ? "inputError" : ""}`}>
 								<label className='label_top'>ლეპტოპის RAM (GB)</label>
 								<input
 									type={"text"}

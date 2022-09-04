@@ -30,3 +30,59 @@
 	border-bottom: 2px solid black;
 	width: 81%;
 }
+
+.mobileHeader {
+	display: none;
+}
+
+@media only screen and (max-width: 390px) {
+	.header-element,
+	.fBackButton {
+		display: none;
+	}
+	.mobileHeader {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		width: 100%;
+		justify-content: center;
+	}
+	.mobileHeader div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.mobile_back {
+		background: url("../svg//mobileback.svg");
+		height: 15px;
+		width: 9.26px;
+		position: absolute;
+		left: 20px;
+	}
+	.mobile_header_page_name {
+		font-family: "Helvetica Neue";
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 20px;
+		/* identical to box height */
+
+		text-align: center;
+
+		/* შავი/700 */
+
+		color: #232323;
+	}
+	.mobile_header_page {
+		font-family: "Helvetica Neue";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 17px;
+		/* identical to box height */
+
+		text-align: center;
+		margin-top: 5px;
+		color: #898989;
+	}
+}
