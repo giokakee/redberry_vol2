@@ -290,6 +290,19 @@
 
 input[type="radio"] {
 	cursor: pointer;
+	color: #62a1eb;
+	border: 1px solid green;
+}
+
+.sBackButton {
+	font-family: "Helvetica Neue";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+	border: none;
+	color: #62a1eb;
+	cursor: pointer;
 }
 
 @media only screen and (max-width: 390px) {

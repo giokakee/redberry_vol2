@@ -18,7 +18,6 @@ const checkGeoInputs = (reg, value) => {
 const UserInfo = () => {
 	const [teams, setTeams] = useState([]);
 	const [positions, setPositions] = useState([]);
-
 	const [userInfo, setUserInfo] = useState({
 		name: "",
 		surname: "",
@@ -57,6 +56,7 @@ const UserInfo = () => {
 		phone_number.slice(0, 4) === "+995" &&
 		phone_number.slice(1).match(numReg).length === phone_number.length - 1 &&
 		phone_number.length === 13;
+
 	useEffect(() => {
 		let formIsValid = mobileValidation && mailValidation && surnameValidation && nameValidation && team_id > 0 && position_id > 0;
 
@@ -70,12 +70,18 @@ const UserInfo = () => {
 	const submit = e => {
 		e.preventDefault();
 		let formIsValid = mobileValidation && mailValidation && surnameValidation && nameValidation && team_id > 0 && position_id > 0;
+		console.log(formIsValid);
 		formIsValid ? dispatch({ type: "VALID" }) && navigate("/s") : dispatch({ type: "NOTVALID" });
 	};
 
 	const userChange = (key, value) => {
-		setUserInfo({ ...userInfo, [key]: value });
-		localStorage.setItem("user", JSON.stringify({ ...userInfo, [key]: value }));
+		if (key === "team_id") {
+			setUserInfo({ ...userInfo, [key]: value, position_id: "" });
+			localStorage.setItem("user", JSON.stringify({ ...userInfo, [key]: value, position_id: "" }));
+		} else {
+			setUserInfo({ ...userInfo, [key]: value });
+			localStorage.setItem("user", JSON.stringify({ ...userInfo, [key]: value }));
+		}
 	};
 
 	return (
@@ -130,7 +136,11 @@ const UserInfo = () => {
 						</option>
 						{positions.map(position => {
 							return (
-								<option value={position.id} selected={userInfo.position_id === position.id} key={position.id}>
+								<option
+									disabled={team_id ? team_id !== position.team_id : true}
+									value={position.id}
+									selected={userInfo.position_id === position.id}
+									key={position.id}>
 									{position.name}
 								</option>
 							);
