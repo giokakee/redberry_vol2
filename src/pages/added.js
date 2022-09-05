@@ -9,7 +9,7 @@ const Added = () => {
 			<div className='addedBox'>
 				<div className='addedDiv'>
 					<div className='addedLogo'></div>
-					<h1>ჩანაწერი დამატებულია</h1>
+					<h1>ჩანაწერი დამატებულია!</h1>
 				</div>
 				<div className='addedDiv'>
 					<button className='button1' onClick={() => navigate("/list")}>

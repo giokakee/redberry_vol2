@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.25a00a31.css",
-    "main.js": "/static/js/main.20f016c6.js",
+    "main.css": "/static/css/main.2bad3e5f.css",
+    "main.js": "/static/js/main.ac331d29.js",
     "static/js/787.9de5659f.chunk.js": "/static/js/787.9de5659f.chunk.js",
     "static/media/landing.svg": "/static/media/landing.1fe6cae5d51a5a4b6b31.svg",
     "static/media/redberrylogo.svg": "/static/media/redberrylogo.f21a897d4f627ef57825.svg",
     "static/media/redberry.svg": "/static/media/redberry.6169292b2c0f36d3bfc8.svg",
     "static/media/iphonelanding.svg": "/static/media/iphonelanding.8a4a8d5ffa6678722d07.svg",
     "static/media/added.svg": "/static/media/added.a269f196b65df71cd12a.svg",
+    "static/media/gelicon.svg": "/static/media/gelicon.e1f9fc7d8659c94c6592.svg",
     "static/media/errorimglogo.svg": "/static/media/errorimglogo.a5c76baa04a29d3b77c2.svg",
     "static/media/back.svg": "/static/media/back.9955b0a02c57aef06828.svg",
     "static/media/mobileback.svg": "/static/media/mobileback.63ac9df33938df0f03bd.svg",
     "static/media/mobilephoto.svg": "/static/media/mobilephoto.56814912b5b0278340d4.svg",
     "index.html": "/index.html",
-    "main.25a00a31.css.map": "/static/css/main.25a00a31.css.map",
-    "main.20f016c6.js.map": "/static/js/main.20f016c6.js.map",
+    "main.2bad3e5f.css.map": "/static/css/main.2bad3e5f.css.map",
+    "main.ac331d29.js.map": "/static/js/main.ac331d29.js.map",
     "787.9de5659f.chunk.js.map": "/static/js/787.9de5659f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.25a00a31.css",
-    "static/js/main.20f016c6.js"
+    "static/css/main.2bad3e5f.css",
+    "static/js/main.ac331d29.js"
   ]
 }

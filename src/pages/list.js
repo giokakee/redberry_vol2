@@ -1,7 +1,7 @@
 import "./list.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ListPage = () => {
 	const [list, setList] = useState([]);
@@ -15,12 +15,15 @@ const ListPage = () => {
 		getData();
 	}, []);
 
+	const navigate = useNavigate("/");
+
 	return (
 		<div className='listPage'>
 			<div className='oneLaptopHeader'>
-				<div className='fBackButton onelaptopBackButton'>
+				<div className='lBackButton'>
 					<Link to={"/"}></Link>
 				</div>
+				<div onClick={() => navigate("/")} className='lBackButton fBackButton onelaptopBackButton'></div>
 				<h1>ჩანაწერების სია</h1>
 			</div>
 			<div className='laptopList'>

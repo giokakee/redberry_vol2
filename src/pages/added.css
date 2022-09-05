@@ -67,3 +67,11 @@
 	background-color: white;
 	cursor: pointer;
 }
+
+@media only screen and (max-width: 390px) {
+	.addedPage {
+		width: 390px;
+		background-color: white;
+		min-height: 100vh;
+	}
+}

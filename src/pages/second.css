@@ -298,19 +298,6 @@ input[type="radio"] {
 	}
 
 	.sForm {
-		/* background-color: white;
-		height: auto;
-		min-width: 900px;
-		width: 50%;
-		max-width: 1226px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-evenly;
-		align-items: center;
-		padding-left: 174px;
-		padding-right: 174px;
-		padding-top: 67px;
-		padding-bottom: 63px; */
 		width: 100vw;
 		display: flex;
 		flex-direction: column;
@@ -338,7 +325,8 @@ input[type="radio"] {
 		line-height: 26px;
 	}
 
-	.s1 button {
+	.s1 button,
+	.forBorder {
 		display: none;
 	}
 
@@ -350,7 +338,9 @@ input[type="radio"] {
 
 	.s2,
 	.s3,
-	.s5 {
+	.s5,
+	.s6,
+	.s7 {
 		width: 358px;
 		display: flex;
 		flex-direction: column;
@@ -392,5 +382,37 @@ input[type="radio"] {
 	.s5 {
 		display: flex;
 		flex-direction: column;
+	}
+	.laptopImage {
+		width: 90%;
+		height: auto;
+	}
+
+	.s7 {
+		flex-direction: row;
+	}
+
+	.sBackButton {
+		border: none;
+		background-color: white;
+		color: #62a1eb;
+		font-family: "Helvetica Neue";
+		font-style: normal;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 21px;
+	}
+
+	.priceDiv {
+		position: relative;
+		display: flex;
+		justify-content: center;
+	}
+	.gelicon {
+		background: url("../svg/gelicon.svg") no-repeat;
+		width: 13px;
+		height: 15.7px;
+		position: absolute;
+		left: 320px;
 	}
 }

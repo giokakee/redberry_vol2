@@ -166,7 +166,7 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 							<div>
 								<label className='label_top'>ლეპტოპის სახელი</label>
 								<input value={laptop_name} onChange={({ target }) => changeInputs("laptop_name", target.value)} required />
-								<label className='s2_label'>ლათინური ასოები, ციფრები, {`!@#$%^&*()`}_+= </label>
+								<label className='s2_label label_bottom'>ლათინური ასოები, ციფრები, {`!@#$%^&*()`}_+= </label>
 							</div>
 							<select defaultValue={""} onChange={({ target }) => changeInputs("laptop_brand_id", target.value)} required>
 								<option value={""} disabled>
@@ -204,7 +204,7 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 									onChange={({ target }) => changeInputs("laptop_cpu_cores", target.value)}
 									required
 								/>
-								<label>მხოლოდ ციფრები</label>
+								<label className='label_bottom'>მხოლოდ ციფრები</label>
 							</div>
 							<div className={` ${laptop_cpu_threads.length > 0 && threadsIsValid ? "inputError" : ""}`}>
 								<label className='label_top'>CPU-ს ნაკადი</label>
@@ -214,7 +214,7 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 									onChange={({ target }) => changeInputs("laptop_cpu_threads", target.value)}
 									required
 								/>
-								<label>მხოლოდ ციფრები</label>
+								<label className='label_bottom'>მხოლოდ ციფრები</label>
 							</div>
 						</div>
 						<div className='s4'>
@@ -227,7 +227,7 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 									onChange={({ target }) => changeInputs("laptop_ram", target.value)}
 									required
 								/>
-								<label>მხოლოდ ციფრები</label>
+								<label className='label_bottom'>მხოლოდ ციფრები</label>
 							</div>
 
 							<div className='s4_radio'>
@@ -271,13 +271,17 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 							</div>
 							<div className={` ${laptop_price.length > 0 && priceIsValid ? "inputError" : ""}`}>
 								<label className='label_top'>ლეპტოპის ფასი</label>
-								<input
-									placeholder='0000'
-									value={laptop_price}
-									onChange={({ target }) => changeInputs("laptop_price", target.value)}
-									required
-								/>
-								<label>მხოლოდ ციფრები</label>
+
+								<div className='priceDiv'>
+									<input
+										placeholder='0000'
+										value={laptop_price}
+										onChange={({ target }) => changeInputs("laptop_price", target.value)}
+										required
+									/>
+									<div className='gelicon'></div>
+								</div>
+								<label className='label_bottom'>მხოლოდ ციფრები</label>
 							</div>
 						</div>
 						<div className='forBorder'></div>
@@ -310,7 +314,9 @@ const LaptopInfo = ({ firstPageIsValid }) => {
 							</div>
 						</div>
 						<div className='s7'>
-							<button onClick={() => navigate("/f")}>უკან</button>
+							<button className='sBackButton' onClick={() => navigate("/f")}>
+								უკან
+							</button>
 							<button className='saveBtn' type='submit'>
 								დამახსოვრება
 							</button>

@@ -24,6 +24,7 @@
 	align-items: center;
 	padding: 14px;
 	border-radius: 20px;
+	border: 1px solid #aed1ea;
 }
 .laptopDiv img {
 	width: 266px;
@@ -56,4 +57,69 @@
 	font-size: 18px;
 	line-height: 21px;
 	color: #2e2e2e;
+}
+
+.lBackButton {
+	background: url("../svg/back.svg") no-repeat;
+	height: 53px;
+	width: 53px;
+	left: 70px;
+	position: absolute;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 390px) {
+	.lBackButton {
+		display: none;
+	}
+	.oneLaptopHeader {
+		position: relative;
+	}
+	.oneLaptopHeader h1 {
+		font-family: "Helvetica Neue";
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 20px;
+	}
+	.lBackButton {
+		background: url("../svg//mobileback.svg") no-repeat;
+		height: 16px;
+		width: 9.21px;
+		left: 10px;
+		position: absolute;
+	}
+
+	.laptopList {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
+	.laptopDiv {
+		width: 358px;
+		height: 123px;
+		border: 1px solid #aed1ea;
+	}
+	.laptopDiv img {
+		width: 164px;
+		height: 109px;
+		margin-right: 16px;
+	}
+	.laptopDiv a {
+		font-family: "Helvetica Neue";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 21px;
+		/* identical to box height, or 150% */
+
+		display: flex;
+		align-items: center;
+		text-decoration-line: underline;
+
+		/* ლურჯი/700 */
+
+		color: #4386a9;
+	}
 }

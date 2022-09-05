@@ -80,3 +80,58 @@
 
 	color: #797979;
 }
+
+@media only screen and (max-width: 390px) {
+	.oneLaptop {
+		width: 390px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	.laptopBox {
+		display: flex;
+		width: 390px;
+		justify-content: center;
+		align-items: center;
+	}
+	.laptopBoxDiv {
+		display: flex;
+		flex-direction: column;
+		width: 390px;
+	}
+
+	.infoDiv {
+		display: flex;
+		flex-direction: column;
+		width: 390px;
+		min-width: 390px;
+	}
+
+	.imageDiv {
+		width: 358px;
+		height: 191px;
+	}
+
+	.imageDiv img {
+		width: 100%;
+		height: auto;
+	}
+
+	.key {
+		font-family: "Helvetica Neue";
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 178%;
+	}
+
+	.value {
+		font-family: "Helvetica Neue";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 25px;
+	}
+	/* .infoDiv div p {
+		width: 10px;
+	} */
+}
