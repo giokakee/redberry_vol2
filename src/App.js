@@ -17,6 +17,9 @@ function App({ num }) {
 		// window.localStorage.clear();
 		firstPageISValid ? dispatch({ type: '"VALID"' }) : dispatch({ type: "NOTVALID" });
 	}, [firstPageISValid, dispatch]);
+
+	console.log("checking new branch");
+
 	return (
 		<div className='App'>
 			<Routes>
